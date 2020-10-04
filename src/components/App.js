@@ -25,7 +25,6 @@ export default class Phonebook extends React.Component {
         const el = event.target.elements;
         const nameInput = el.nameInput.value;
         const numberInput = el.numberInput.value;
-        console.log(this.isNotUniqueName(nameInput), "cons");
         if (!this.isNotUniqueName(nameInput)) {
             this.setState({
                 contacts: [

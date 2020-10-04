@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function ContactList(props) {
     const { contacts, filter } = props.state;
@@ -27,3 +28,15 @@ export default function ContactList(props) {
         </ul>
     );
 }
+
+ContactList.defaultProps = {
+    filter: null,
+};
+
+ContactList.propTypes = {
+    state: PropTypes.exact({
+        contacts: PropTypes.arrayOf(PropTypes.object),
+        filter: PropTypes.string,
+    }).isRequired,
+    deleteContact: PropTypes.func.isRequired,
+};

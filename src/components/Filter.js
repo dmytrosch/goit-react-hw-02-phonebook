@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Filter(props) {
     return (
@@ -8,3 +9,7 @@ export default function Filter(props) {
         </label>
     );
 }
+
+Filter.propTypes = {
+    searchHandler: PropTypes.func.isRequired,
+};
