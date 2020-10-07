@@ -51,7 +51,19 @@ export default class Phonebook extends React.Component {
             };
         });
     };
+    findContact() {
+        const { contacts, filter } = this.state;
+        console.log(
+            contacts.filter((contact) =>
+                contact.name.toLowerCase().includes(filter.toLowerCase())
+            )
+        );
+        return contacts.filter((contact) =>
+            contact.name.toLowerCase().includes(filter.toLowerCase())
+        );
+    }
     render() {
+        const { contacts, filter } = this.state;
         return (
             <section>
                 <h1>Phonebook</h1>
@@ -59,9 +71,12 @@ export default class Phonebook extends React.Component {
                 <h2>Contacts</h2>
                 <Filter searchHandler={this.searchInputHandler} />
                 <ContactList
-                    state={this.state}
+                    contacts={filter ? this.findContact() : contacts}
                     deleteContact={this.onDeleteBtnHandler}
                 />
+                {filter && this.findContact().length === 0 && (
+                    <p>There's no such contact</p>
+                )}
             </section>
         );
     }
